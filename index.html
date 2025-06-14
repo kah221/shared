@@ -1,22 +1,41 @@
-here is kah221's top of merchior
-
+<!-- 250614_1740 -->
 <!DOCTYPE html>
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>kah221 > merchior</title>
+    <title>kah221 TOP</title>
 </head>
 <body>
-    <p>
-        merchior/<br>
-            |- index.html<br>
-            |<br>
-            |- wordlist/<br>
-            |   \- wordlist.html<br>
-            |<br>
-            ...<br>
-    </p>
-    <a href="./wordlist/wordlist.html">単語帳</a>
+    <p>here is index.html</p>
+    <div id="treeContainer"></div>
+    <a href="./tree.md" target="_blank">ツリー</a><br>
+    <a href="./pages/wordlist.html">単語帳</a><br>
+    <a href="./pages/translation.html">翻訳ノート</a>
+
+    <script>
+        // ツリー（tp-tree.html）を読み込む関数
+        function loadTree(elementId, filePath) {
+            fetch(filePath)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('HTTP error! status: ' + response.status);
+                    }
+                    return response.text();
+                })
+                .then(html => {
+                    document.getElementById(elementId).innerHTML = html;
+                })
+                .catch(error => {
+                    console.error('Error loading HTML:', error);
+                });
+        }
+
+        // ページ読み込み時にツリーを読み込む
+        document.addEventListener("DOMContentLoaded", function() {
+            loadTree("treeContainer", "./component/tp-tree.html");
+        });
+
+    </script>
 </body>
 </html>
