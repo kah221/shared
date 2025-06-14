@@ -6,7 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>kah221 TOP</title>
 </head>
-<body>
+<style>
+
+</style>
+<body bgcolor="#0d1117" text="#c9d1d9" link="#58a6ff" vlink="#58a6ff" alink="#58a6ff">
     <p>here is index.html</p>
     <!-- ------------------------------ -->
     <!-- ↑ ヘッダー -->
@@ -14,16 +17,6 @@
     <!-- ------------------------------ -->
 
     <div id="treeContainer"></div>
-
-    <!-- ------------------------------ -->
-    <!-- ↑ ジャンプ用ツリー -->
-    <!-- ↓  -->
-    <!-- ------------------------------ -->
-
-    <a href="./tree.md" target="_blank">ツリー</a><br>
-    <a href="./pages/wordlist.html">単語帳</a><br>
-    <a href="./pages/translation.html">翻訳ノート</a>
-
     <script>
         // ツリー（tp-tree.html）を読み込む関数
         function loadTree(elementId, filePath) {
@@ -46,7 +39,13 @@
         document.addEventListener("DOMContentLoaded", function() {
             loadTree("treeContainer", "./component/tp-tree.html");
         });
-
     </script>
+
+    <!-- ------------------------------ -->
+    <!-- ↑ ジャンプ用ツリー -->
+    <!-- ↓  -->
+    <!-- ------------------------------ -->
+
+
 </body>
 </html>
