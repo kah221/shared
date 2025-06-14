@@ -8,6 +8,38 @@
 </head>
 <body>
     <p>here is translation.html</p>
-    <a href="../index.html">TOP</a>
+    <!-- ------------------------------ -->
+    <!-- ↑ ヘッダー -->
+    <!-- ↓ ジャンプ用ツリー -->
+    <!-- ------------------------------ -->
+
+    <div id="treeContainer"></div>
+    <script>
+        // ツリー（tp-tree.html）を読み込む関数
+        function loadTree(elementId, filePath) {
+            fetch(filePath)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('HTTP error! status: ' + response.status);
+                    }
+                    return response.text();
+                })
+                .then(html => {
+                    document.getElementById(elementId).innerHTML = html;
+                })
+                .catch(error => {
+                    console.error('Error loading HTML:', error);
+                });
+        }
+        // ページ読み込み時にツリーを読み込む
+        document.addEventListener("DOMContentLoaded", function() {
+            loadTree("treeContainer", "./component/tp-tree.html");
+        });
+    </script>
+
+    <!-- ------------------------------ -->
+    <!-- ↑ ジャンプ用ツリー -->
+    <!-- ↓  -->
+    <!-- ------------------------------ -->
 </body>
 </html>
