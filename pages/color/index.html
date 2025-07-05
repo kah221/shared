@@ -1,0 +1,219 @@
+<!-- 250705_1548 -->
+<!--
+命名規則
+bl-1 #0053da
+bl-2 #
+
+pi-1 #e53368
+pi-2 #
+
+gr-1 #4ea72e
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-->
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DotGothic16&display=swap" rel="stylesheet">
+    <!-- <link rel="icon" type="image/png" href="231117_1618_imoriicon2.png"> -->
+    <link rel="icon" type="image/png" href="color-icon.png">
+    <title>【スポイト用】よく使う色</title>
+</head>
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: 'DotGothic16', sans-serif;
+    }
+    p {
+        margin: 0;
+        padding-left: 7px;
+    }
+    hr {
+        margin: 0px;
+    }
+    p.wh {color: #fff;}
+    p.bl {color: #000}
+    div.color-box { /* divセレクタをより具体的にしました */
+        width: 100px;
+        height: 100px;
+        margin: 0px;
+        padding: 0px;
+        display: inline-block;
+        /* クリック可能であることを示すカーソル */
+        cursor: pointer;
+    }
+    .container {
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: left;
+    }
+
+    /* コピー完了メッセージのスタイル */
+    #copy-message {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: rgba(0, 0, 0, 0.8);
+        color: white;
+        font-size: 15px;
+        padding: 11px 21px;
+        border-radius: 5px;
+        z-index: 1000;
+        opacity: 0;
+        transition: opacity 0.1s ease-in-out;
+        pointer-events: none;
+    }
+    #copy-message.show {
+        opacity: 1;
+    }
+
+    /* 背景色 */
+    #bl-1 {background-color: #0053da;}
+    #bl-2 {background-color: #d4deed;}
+
+    #pl-1 {background-color: #e53368;}
+    #pl-2 {background-color: #e9d8dc;}
+
+    #gr-1 {background-color: #22965e;}
+    #gr-2 {background-color: #cee0d7;}
+
+    #pu-1 {background-color: #4a30a0;}
+    #pu-2 {background-color: #d6d7e6;}
+
+    #or-1 {background-color: #e65045;}
+    #or-2 {background-color: #edd9d8;}
+
+    #ye-1 {background-color: #cee645;}
+    #ye-2 {background-color: #e5eacb;}
+
+    #bg-1 {background-color: #dfdfdf;}
+    #bg-2 {background-color: #cccccc;}
+    #bg-3 {background-color: #010409;}
+    #bg-4 {background-color: #0d1117;}
+    #bg-5 {background-color: #010409;}
+
+    #o-00 {background-color: #a8adbc;}
+    #o-01 {background-color: #00358a;}
+</style>
+<body bgcolor="#dfdfdf">
+    <p style="padding:0px;">
+        <br>
+        <strong>【スポイト用】よく使う色</strong><br>
+        <strong>　使い方：</strong>色領域をクリック<span><span style="font-size:13px;">（カラーコードをコピー）</span>
+        <br><br>
+    </p>
+
+    <hr>
+    <p><strong>Accent</strong></p>
+    <div class="container">
+        <div id="bl-1" class="color-box" data-color-code="#0053da"><p class="wh">bl-1<br>#0053da<br></p></div>
+        <div id="pl-1" class="color-box" data-color-code="#e53368"><p class="wh">pi-1<br>#e53368<br></p></div>
+        <div id="gr-1" class="color-box" data-color-code="#22965e"><p class="wh">gr-1<br>#22965e<br></p></div>
+        <div id="pu-1" class="color-box" data-color-code="#4a30a0"><p class="wh">pu-1<br>#7030a0<br></p></div>
+        <div id="or-1" class="color-box" data-color-code="#e65045"><p class="wh">or-1<br>#e65045<br></p></div>
+        <div id="ye-1" class="color-box" data-color-code="#cee645"><p class="br">ye-1<br>#cee645<br></p></div>
+    </div>
+    <p><strong>Accent-fade</strong></p>
+    <div class="container">
+        <div id="bl-2" class="color-box" data-color-code="#d4deed"><p class="bl">bl-2<br>#d4deed<br></p></div>
+        <div id="pl-2" class="color-box" data-color-code="#e9d8dc"><p class="bl">pi-2<br>#e9d8dc<br></p></div>
+        <div id="gr-2" class="color-box" data-color-code="#cee0d7"><p class="bl">gr-2<br>#cee0d7<br></p></div>
+        <div id="pu-2" class="color-box" data-color-code="#d6d7e6"><p class="bl">pu-2<br>#d6d7e6<br></p></div>
+        <div id="or-2" class="color-box" data-color-code="#edd9d8"><p class="bl">or-2<br>#edd9d8<br></p></div>
+        <div id="ye-2" class="color-box" data-color-code="#e5eacb"><p class="bl">ye-2<br>#e5eacb<br></p></div>
+    </div>
+    <p><strong>Background</strong></p>
+    <div class="container">
+        <div id="bg-1" class="color-box" data-color-code="#dfdfdf"><p class="bl">bg-1<br>#dfdfdf<br>汎用df背景</p></div>
+        <div id="bg-2" class="color-box" data-color-code="#cccccc"><p class="bl">bg-2<br>#cccccc<br>df影, text</p></div>
+        <div id="bg-3" class="color-box" data-color-code="#010409"><p class="wh">bg-3<br>#010409<br>git濃</p></div>
+        <div id="bg-4" class="color-box" data-color-code="#0d1117"><p class="wh">bg-4<br>#0d1117<br>git濃次</p></div>
+        <div id="bg-5" class="color-box" data-color-code="#010409"><p class="wh">bg-5<br>#010409<br>VSCf-bg</p></div>
+    </div>
+    <p><strong>Others</strong></p>
+    <div class="container">
+        <div id="o-00" class="color-box" data-color-code="#a8adbc"><p class="bl">o-00<br>#a8adbc<br>graph-gray</p></div>
+        <div id="o-01" class="color-box" data-color-code="#00358a"><p class="wh">o-01<br>#00358a<br>pptx-title</p></div>
+    </div>
+
+    <!--  -->
+    <hr>
+    <p style="text-align:left;">
+        <br>
+        <br>
+        よく使用する色を素早く参照するために作成．<br>
+        随時更新予定<br>
+        <br>
+        - 制作：<a href="https://github.com/kah221" target="_blank">kah221</a><br>
+        - 更新ログ<br>
+        　250706_0047：初期版完成
+        <br>
+        <br>
+        <br>
+    </p>
+
+
+    <!-- 表示するメッセージを格納するための要素 -->
+    <div id="copy-message"></div>
+    <script>
+        // 要素をタップorクリックでクリップボードにカラーコードをコピーする関数
+        document.addEventListener('DOMContentLoaded', function() {
+            // 全.container要素にイベントリスナーを用意
+            const containers = document.querySelectorAll('.container');
+            const copyMessageElement = document.getElementById('copy-message');
+
+            containers.forEach(container => {
+                container.addEventListener('click', async (event) => {
+                    // クリックされた要素が.color-boxクラスを持つdiv要素か確認
+                    const colorBox = event.target.closest('.color-box');
+
+                    if (colorBox) {
+                        const colorCode = colorBox.dataset.colorCode; // data-color-codeから値を取得
+
+                        if (colorCode) {
+                            try {
+                                await navigator.clipboard.writeText(colorCode);
+                                // コピー成功メッセージを表示
+                                copyMessageElement.textContent = `Copied! → ${colorCode}`;
+                                copyMessageElement.classList.add('show');
+                                setTimeout(() => {
+                                    copyMessageElement.classList.remove('show');
+                                }, 1000); // 1.5秒後にメッセージを非表示
+                            } catch (err) {
+                                console.error('Copy failure:', err);
+                                copyMessageElement.textContent = 'Copy failure';
+                                copyMessageElement.classList.add('show');
+                                setTimeout(() => {
+                                    copyMessageElement.classList.remove('show');
+                                }, 2000);
+                            }
+                        }
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
