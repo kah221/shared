@@ -1,29 +1,7 @@
 <!-- 250705_1548 -->
+<!-- 251128_0402 -->
 <!--
-命名規則
-bl-1 #0053da
-bl-2 #
-
-pi-1 #e53368
-pi-2 #
-
-gr-1 #4ea72e
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+慣例でグラフの系列色には原色を使っているけど，よく考えるとかなり目に悪いなと思う
 -->
 <!DOCTYPE html>
 <html lang="ja">
@@ -33,7 +11,6 @@ gr-1 #4ea72e
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DotGothic16&display=swap" rel="stylesheet">
-    <!-- <link rel="icon" type="image/png" href="231117_1618_imoriicon2.png"> -->
     <link rel="icon" type="image/png" href="color-icon.png">
     <title>【スポイト用】よく使う色</title>
 </head>
@@ -52,13 +29,12 @@ gr-1 #4ea72e
     }
     p.wh {color: #fff;}
     p.bl {color: #000}
-    div.color-box { /* divセレクタをより具体的にしました */
+    div.color-box {
         width: 100px;
         height: 100px;
         margin: 0px;
         padding: 0px;
         display: inline-block;
-        /* クリック可能であることを示すカーソル */
         cursor: pointer;
     }
     .container {
@@ -69,7 +45,7 @@ gr-1 #4ea72e
         justify-content: left;
     }
 
-    /* コピー完了メッセージのスタイル */
+    /* コピー完了メッセージ */
     #copy-message {
         position: fixed;
         top: 50%;
@@ -89,31 +65,44 @@ gr-1 #4ea72e
         opacity: 1;
     }
 
-    /* 背景色 */
+    /* id で色を付ける*/
+    /* Accent */
     #bl-1 {background-color: #0053da;}
-    #bl-2 {background-color: #d4deed;}
-
     #pl-1 {background-color: #e53368;}
-    #pl-2 {background-color: #e9d8dc;}
-
     #gr-1 {background-color: #22965e;}
-    #gr-2 {background-color: #cee0d7;}
-
     #pu-1 {background-color: #4a30a0;}
-    #pu-2 {background-color: #d6d7e6;}
-
     #or-1 {background-color: #e65045;}
-    #or-2 {background-color: #edd9d8;}
-
     #ye-1 {background-color: #cee645;}
+    /* Accent-fade */
+    #bl-2 {background-color: #d4deed;}
+    #pl-2 {background-color: #e9d8dc;}
+    #gr-2 {background-color: #cee0d7;}
+    #pu-2 {background-color: #d6d7e6;}
+    #or-2 {background-color: #edd9d8;}
     #ye-2 {background-color: #e5eacb;}
-
+    /* Background */
     #bg-1 {background-color: #dfdfdf;}
     #bg-2 {background-color: #cccccc;}
     #bg-3 {background-color: #010409;}
     #bg-4 {background-color: #0d1117;}
     #bg-5 {background-color: #010409;}
-
+    /* Series-custom */
+    #sc-1 {background-color: #ff0000;}
+    #sc-2 {background-color: #000000;}
+    #sc-3 {background-color: #0000ff;}
+    #sc-4 {background-color: #008040;}
+    #sc-5 {background-color: #ff8040;}
+    #sc-6 {background-color: #800080;}
+    #sc-7 {background-color: #df2080;}
+    /* Series-matlab */
+    #sm-1 {background-color: #0072bd;}
+    #sm-2 {background-color: #d95319;}
+    #sm-3 {background-color: #edb120;}
+    #sm-4 {background-color: #7e2f8e;}
+    #sm-5 {background-color: #77ac30;}
+    #sm-6 {background-color: #4dbeee;}
+    #sm-7 {background-color: #a2142f;}
+    /* Others */
     #o-00 {background-color: #a8adbc;}
     #o-01 {background-color: #00358a;}
 </style>
@@ -152,13 +141,33 @@ gr-1 #4ea72e
         <div id="bg-4" class="color-box" data-color-code="#0d1117"><p class="wh">bg-4<br>#0d1117<br>git濃次</p></div>
         <div id="bg-5" class="color-box" data-color-code="#010409"><p class="wh">bg-5<br>#010409<br>VSCf-bg</p></div>
     </div>
+    <p><strong>Series-custom</strong></p>
+    <div class="container">
+        <div id="sc-1" class="color-box" data-color-code="#ff0000"><p class="wh">1st<br>#ff0000<br>255<br>0<br>0</p></div>
+        <div id="sc-2" class="color-box" data-color-code="#000000"><p class="wh">2nd<br>#000000<br>0<br>0<br>0</p></div>
+        <div id="sc-3" class="color-box" data-color-code="#0000ff"><p class="wh">3rd<br>#0000ff<br>0<br>0<br>255</p></div>
+        <div id="sc-4" class="color-box" data-color-code="#008040"><p class="wh">4th<br>#008040<br>0<br>128<br>64</p></div>
+        <div id="sc-5" class="color-box" data-color-code="#ff8040"><p class="bl">5th<br>#ff8040<br>255<br>128<br>64</p></div>
+        <div id="sc-6" class="color-box" data-color-code="#800080"><p class="wh">6th<br>#800080<br>128<br>0<br>128</p></div>
+        <div id="sc-7" class="color-box" data-color-code="#df2080"><p class="wh">7th<br>#df2080<br>223<br>32<br>128</p></div>
+    </div>
+    <p><strong>Series-matlab</strong></p>
+    <div class="container">
+        <div id="sm-1" class="color-box" data-color-code="#0072bd"><p class="wh">1st<br>#0072bd<br>0<br>114<br>189</p></div>
+        <div id="sm-2" class="color-box" data-color-code="#d95319"><p class="wh">2nd<br>#d95319<br>217<br>83<br>25</p></div>
+        <div id="sm-3" class="color-box" data-color-code="#edB120"><p class="bl">3rd<br>#edb120<br>237<br>177<br>32</p></div>
+        <div id="sm-4" class="color-box" data-color-code="#7e2f8e"><p class="wh">4th<br>#7e2f8e<br>126<br>47<br>142</p></div>
+        <div id="sm-5" class="color-box" data-color-code="#77ac30"><p class="wh">5th<br>#77ac30<br>119<br>172<br>48</p></div>
+        <div id="sm-6" class="color-box" data-color-code="#4dbeee"><p class="bl">6th<br>#4dbeee<br>77<br>190<br>238</p></div>
+        <div id="sm-7" class="color-box" data-color-code="#a2142f"><p class="wh">7th<br>#a2142f<br>162<br>20<br>47</p></div>
+    </div>
     <p><strong>Others</strong></p>
     <div class="container">
         <div id="o-00" class="color-box" data-color-code="#a8adbc"><p class="bl">o-00<br>#a8adbc<br>graph-gray</p></div>
         <div id="o-01" class="color-box" data-color-code="#00358a"><p class="wh">o-01<br>#00358a<br>pptx-title</p></div>
     </div>
 
-    <!--  -->
+    <!-- フッター部分 -->
     <hr>
     <p style="text-align:left;">
         <br>
@@ -168,8 +177,8 @@ gr-1 #4ea72e
         <br>
         - 制作：<a href="https://github.com/kah221" target="_blank">kah221</a><br>
         - 更新ログ<br>
-        　250706_0047：初期版完成
-        <br>
+        　250706_0047：初期版完成<br>
+        　251128_0349：グラフの系列色追加<br>
         <br>
         <br>
     </p>
