@@ -1,0 +1,321 @@
+<!-- 260301_1352 -->
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- ↓ フォント -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DotGothic16&display=swap" rel="stylesheet">
+    <!-- ↑ フォント -->
+    <!-- ↓ CSS -->
+    <link rel="stylesheet" href="style.css">
+    <!-- ↓ プロット用ライブラリ -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.plot.ly/plotly-2.32.0.min.js"></script>
+    <!-- ↓ プロット用js -->
+    <script src="script.js" defer></script>
+    <!-- ↓ ブラウザタブアイコン -->
+    <link rel="icon" href="icon.jpg">
+    <title>kahi221-oiae</title>
+</head>
+
+<body>
+    <!-- Fixedアイコン -->
+    <!-- <img src="230821_herta-48p.gif" alt="自作ヘルタアイコン" style="width:100px; margin-left:auto"> -->
+    <!-- <img class="fixedicon" src="250820_herta-eyes.gif" alt="自作ヘルタアイコン" style="width:50px; margin-left:auto"> -->
+
+
+    <br>
+    <!-- <p style="text-align:center">ゲーム用プロフィールページ</p> -->
+    <!-- <p style="text-align:center;">
+        <a href="https://x.com/n83orm">@n83orm</a>
+        　|　
+        <a href="http://discordapp.com/users/473663926538600448">discord</a>
+        　|　
+        <a href="https://github.com/kah221">github</a>
+    </p> -->
+
+    <br>
+    <h1>■ oia猫にeと言わせたい</h1>
+    <br>
+    <!-- <div> -->
+        <p style="text-align:center;font-size:12px; color:#aaaaaa; margin:0; border:solid #dfdfdf 1px; padding: 5px">
+            <br>
+            　例のoiaと発声する猫に何とかしてeと言わせたい．これを目標とし，ここでは達成するための試行錯誤を記録する．
+            <br>　
+        </p>
+    <!-- </div> -->
+
+
+    <!-- <h1>目次</h1> -->
+    <br>
+    <!-- <h1>■ いいい</h1>
+    <p style="text-align:center; padding:3px; background-color:#1f1f1f; margin:0 10px">
+        <span class="gnsn">原神</span>, 
+        <span class="hsr">HSR</span>, 
+        <span class="zzz">ZZZ</span>, 
+        <span class="endf">Endfield</span>, 
+        <span class="mnsb">魔法少女ノ魔女裁判</span>, 
+        Minecraft, スプラ3
+    </p> -->
+
+    <!-- <hr> -->
+    <h1 class="bl-1">■ Logs</h1>
+    <br>
+    <!-- コンテナ 260409 -->
+    <div>
+        <h2>260409</h2>
+        <p>
+            　・ページ作成<br>
+            　・勝手に手順を想像
+        </p>
+        <!-- ↓ 動的領域 -->
+        <!-- 詳細の表示非表示ボタン -->
+        <p>
+            <span id="tgl-btn-1" class="tgl-btn">
+            詳細 >
+            </span>
+        </p>
+        <!-- 表示非表示領域 -->
+        <div id="hide-area-1" class="hide-area" style="display:none">
+            <p>
+            　まず素人が簡単に思いついた手順をメモする．<br>
+            <br>
+            1. 音声ファイル(.wav)を用意し，波形を編集するソフト[1]で開く<br>
+            2. o, i, aの部分を切り取る<br>
+            3. それぞれの音に対して，周波数解析を行う[2]<br>
+            4. パラメータ[3]を編集してeの音声に近づけていく(試行錯誤的に???)<br>
+            <br>
+            [1]: 現時点でAudacityを考えている．これを機に普段使わない機能の使い方も調べてみたい．その他有用なソフト探しも行いたい．<br>
+            [2]: 含まれる基本音を探るという意図で周波数解析と記したが，音声信号処理については素人であるため，関連する解析手法についても今後調べる．<br>
+            [3]: 具体的にどのようなパラメータがあるのかは分からない．昔読んだ本で微かに覚えている「フォルマント」という語から調べてみようと思う．
+            </p>
+        </div>
+        <!-- ↑ 動的領域 -->
+    </div>
+<br>
+    <!-- コンテナ xxxxxxx -->
+    <div>
+        <h2>26xxxx</h2>
+        <p>
+            　・進捗があれば追加する<br>
+        </p>
+        <!-- ↓ 動的領域 -->
+        <!-- 詳細の表示非表示ボタン -->
+        <p>
+            <span id="tgl-btn-2" class="tgl-btn">
+            詳細 >
+            </span>
+        </p>
+        <!-- 表示非表示領域 -->
+        <div id="hide-area-2" class="hide-area" style="display:none">
+            <p>
+            　(＠_＠;)
+            </p>
+        </div>
+        <!-- ↑ 動的領域 -->
+    </div>
+
+
+
+
+
+    <br><br><br>
+    <!-- コンテナ 参考文献 -->
+    <hr>
+    <h1 class="gr-1">■ References</h1>
+    <br>
+    <div>
+        <p>
+            　[*1] 青木直史（2014）『ゼロからはじめる音響学』講談社.<br>
+        </p>
+    </div>
+
+<script>
+    //// 詳細表示・非表示の一括処理
+    // すべての「tgl-btn」クラスを持つ要素に対してループ処理を行う
+    document.querySelectorAll('.tgl-btn').forEach((btn, index) => {
+        btn.addEventListener('click', () => {
+            // 対応する id="hide-area-X" を取得 (tgl-btn-1 なら hide-area-1)
+            const targetId = `hide-area-${index + 1}`;
+            const targetArea = document.getElementById(targetId);
+
+            if(targetArea.style.display === 'none'){
+                targetArea.style.display = 'block';
+                btn.textContent = '詳細 v';
+            } else {
+                targetArea.style.display = 'none';
+                btn.textContent = '詳細 >';
+            }
+        });
+    });
+
+
+    // ------------------------------
+    // countAPI(自作)
+    // ------------------------------
+
+
+    // API利用合言葉
+    const api_pass = "fire-thunder";
+
+    // 加算用関数
+    async function countAPIadd(pw, id){
+        const url = "https://floor02.sakura.ne.jp/function/ct/ct.php?pw=" + pw + "&id=" + id; // ■■ デバッグ時はここをコメントアウト
+        try {
+            const response = await fetch(url);
+            if (!response.ok) throw new Error("HTTPerr: " + response.status);
+            const data = await response.json();
+
+            if (data.status === "success") {
+                return data.count;
+            } else {
+                return "DBerr";
+            }
+        } catch (error) {
+            console.error("RQerr:", error);
+            return "RQerr";
+        }
+    }
+
+    // 取得用関数
+    async function countAPIget(pw, id){
+        // md=get をパラメータに含める
+        const url = "https://floor02.sakura.ne.jp/function/ct/ct.php?pw=" + pw + "&id=" + id + "&md=get";
+
+        try {
+            const response = await fetch(url);
+
+            if (!response.ok) {
+                throw new Error("HTTPerr: " + response.status);
+            }
+
+            const data = await response.json();
+
+            if (data.status === "success") {
+                return data.count;
+            } else {
+                console.error("DBerr:", data.message);
+                return "DBerr";
+            }
+        } catch (error) {
+            console.error("RQerr:", error);
+            return "RQerr";
+        }
+    }
+
+
+        // 画面が読み込まれた時に、両方の処理をまとめて実行する
+    window.addEventListener('DOMContentLoaded', async () => {
+
+        // ------------------------------
+        // 処理1：アクセスカウンター（自動加算）
+        // ------------------------------
+        const viewCountId = "kah221_shared_oiae_view";
+        const hasVisited = sessionStorage.getItem("visited_" + viewCountId);
+        let viewResultCount;
+
+        if (hasVisited) {
+            console.log("visited >>> countAPIget");
+            viewResultCount = await countAPIget(api_pass, viewCountId);
+        } else {
+            console.log("firsttime >>> countAPIadd");
+            viewResultCount = await countAPIadd(api_pass, viewCountId);
+            if (viewResultCount !== "DBerr" && viewResultCount !== "RQerr") {
+                sessionStorage.setItem("visited_" + viewCountId, "true");
+            }
+        }
+
+        // 取得した数字をHTMLに反映（要素が存在する場合のみ）
+        const displayElement = document.getElementById("countAPI-display"); // 先ほど修正したハイフンorアンダーバーに合わせてください
+        if (displayElement) {
+            displayElement.innerText = viewResultCount;
+        }
+
+        // ------------------------------
+        // 処理2：見たよボタン（クリックで加算）
+        // ------------------------------
+        const counters = document.querySelectorAll('.simple-counter');
+
+        for (const counter of counters) {
+            const targetId = counter.dataset.id;
+            const hasClicked = sessionStorage.getItem("clicked_" + targetId);
+
+            // 1. 初期表示（APIから現在の数字を取得して表示）
+            counter.innerText = "...";
+            const initialCount = await countAPIget(api_pass, targetId);
+            counter.innerText = (initialCount !== "DBerr" && initialCount !== "RQerr") ? initialCount : "err";
+
+            if (hasClicked) {
+                counter.style.opacity = "0.5";
+                counter.style.cursor = "not-allowed";
+                continue;
+            }
+
+            // 2. クリックイベントの登録（クリックで加算）
+            counter.addEventListener('click', async () => {
+                // 連打防止（通信中なら何もしない）
+                if (counter.dataset.processing === "true" || sessionStorage.getItem("clicked_" + targetId)) return;
+
+                // 処理中フラグを立てて、表示を「...」にする
+                counter.dataset.processing = "true";
+                const originalCount = counter.innerText;
+                counter.innerText = "...";
+
+                // APIを叩いて加算
+                const newCount = await countAPIadd(api_pass, targetId);
+
+                // 結果の反映
+                if (newCount !== "DBerr" && newCount !== "RQerr") {
+                    counter.innerText = newCount;
+                    sessionStorage.setItem("clicked_" + targetId, "true");
+                    counter.style.opacity = "0.5";
+                    counter.style.cursor = "not-allowed";
+                } else {
+                    counter.innerText = originalCount; // 失敗時は元の数字に戻す
+                }
+
+                // 処理中フラグを解除
+                counter.dataset.processing = "false";
+            });
+        }
+
+    });
+
+    </script>
+
+    <br><br><br>
+    <!-- 見たよボタン -->
+    <p style="text-align:center">見たよボタン→ <span class="simple-counter" data-id="kah221_shared_oiae_haveread"></span><br>
+        <span style="font-size:14px">1度のアクセスで1回だけ押せます</span>
+    </p>
+
+    <br><br><br>
+    <p style="text-align:center;font-size:12px; color:#aaaaaa; margin:0">
+        　260409_0217：開始
+    </p>
+    <!-- カウンタ -->
+    <!-- アクセス kah221_shared_oiae_view -->
+    <p id="countAPI-display" style="text-align:center; font-size:14px; color:#010409;"></p>
+
+    <!-- 見たよボタンのスタイル -->
+    <style>
+        .simple-counter {
+            display: inline-block;
+            padding: 2px 12px;
+            background-color: #343434;
+            border: 1px solid #ccc;
+            border-radius: 2px;
+            cursor: pointer;
+            user-select: none;
+            color:#fff;
+        }
+        .simple-counter:hover {
+            background-color:#e53368;
+        }
+    </style>
+</body>
+</html>
