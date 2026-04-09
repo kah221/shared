@@ -9,6 +9,13 @@ body {
     max-width:1000px;
     padding:0 10px 100px;
 }
+/* フォント */
+.font {
+    font-family:
+    "Times New Roman", /* 英数字 */
+        "Symbol", /* ギリシャ文字 */
+        "MS Gothic" /* 日本語 */
+}
 
 h1 {font-size:22px; margin:0}
 h2 {font-size:20px; margin:0}
