@@ -221,7 +221,7 @@
 
     // 加算用関数
     async function countAPIadd(pw, id){
-        // const url = "https://floor02.sakura.ne.jp/function/ct/ct.php?pw=" + pw + "&id=" + id; // ■■ デバッグ時はここをコメントアウト
+        const url = "https://floor02.sakura.ne.jp/function/ct/ct.php?pw=" + pw + "&id=" + id; // ■■ デバッグ時はここをコメントアウト
         try {
             const response = await fetch(url);
             if (!response.ok) throw new Error("HTTPerr: " + response.status);
@@ -287,7 +287,7 @@
         }
 
         // 取得した数字をHTMLに反映（要素が存在する場合のみ）
-        const displayElement = document.getElementById("countAPI-display"); // 先ほど修正したハイフンorアンダーバーに合わせてください
+        const displayElement = document.getElementById("countAPI-display");
         if (displayElement) {
             displayElement.innerText = viewResultCount;
         }
