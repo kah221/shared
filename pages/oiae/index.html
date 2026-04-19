@@ -151,12 +151,12 @@
     </div>
     <!-- ↑ コンテナ 260410 -->
 
-    <!-- ↓ コンテナ xxxxxxx -->
+    <!-- ↓ コンテナ 260417 -->
     <br>
     <div>
-        <h2>26xxxx</h2>
+        <h2>260417</h2>
         <p>
-            　・進捗があれば追加する<br>
+            　・MATLAB/Simulink での周波数解析を試みる >>> 失敗<br>
         </p>
         <!-- ↓ 動的領域 -->
         <!-- 詳細の表示非表示ボタン -->
@@ -168,15 +168,346 @@
         <!-- 表示非表示領域 -->
         <div id="hide-area-3" class="hide-area" style="display:none">
             <p class="font">
+            　音声ファイルの編集方法について調べた．近年音声認識など機械学習の手法を使うことが多いため，Python言語がよく使われるそう（ライブラリも充実しているらしい）．昨年度から使う機会の多かったMATLABでも当然代替できるようで，特にSimulinkで信号線をつないで遊べたら楽しいだろうなと思い，MATLAB/Simulinkでの手段を調べた．<br>
+            <br>
+            　プロジェクトフォルダを作成し，.mファイル（matlab言語スクリプト）と.slxファイル（Simulinkモデルファイル）を用意する．
+            テスト用に適当な.wavファイルを落とし，mファイルで.wavの読み込みとモノラル化・サンプリング周波数などを変数で取得，FromWorkspaceブロックでSimulinkモデル内へ取り込む．サンプリング周波数を$F_s$として，ブロックやモデル設定をこれに統一する．さらに，シミュレーション終了時間を.wavファイルの総再生時間（長さ）と一致させる．<br>
+            <br>
+            FromWorkspaceブロックから，単純にScopeブロックに接続し，実行して波形を見るときちんと音声波形がプロットされた．(図1)<br>
+            今回は Spectrum Analyzer というブロックを試してみたが，結局使い方がよくわからなかった．この Specrum Analyzer は，簡単に周波数解析ができるブロックですと書かれていたけれど，設定が複雑(調べ不足)で，ウィンドウ内の下2つのプロット領域が今回の用途では不要であったりと扱いづらかった．(図2)<br>
+            <br>
+            <a href="./attach/260419_1710.png" target="_blank">
+                <div  class="fig">
+                    <img src="./attach/260419_1710.png">
+                </div>
+                <p style="text-align:center;font-size:12px; color:#aaaaaa; margin:0;">
+                    Fig. 1　Simulinkの配線とScope波形
+                </p>
+            </a>
+            <br>
+            <a href="./attach/260419_1744.png" target="_blank">
+                <div  class="fig">
+                    <img src="./attach/260419_1744.png">
+                </div>
+                <p style="text-align:center;font-size:12px; color:#aaaaaa; margin:0;">
+                    Fig. 2　Spectrum Analyzerの設定と実行時のウィンドウ
+                </p>
+            </a>
+            </p>
+        </div>
+        <!-- ↑ 動的領域 -->
+    </div>
+    <!-- ↑ コンテナ 260417 -->
+
+    <!-- ↓ コンテナ 260419 -->
+    <br>
+    <div>
+        <h2>260419 <span class="endf" style="font-size:16px; font-weight:100;">←最新!!</span></h2>
+        <p>
+            　1. ピアノ音声を集音してPSDにプロットしてみる<br>
+            　2. 実際の和音と，個別録音の加算を比較<br>
+            　3. ハイパスフィルタ，ローパスフィルタを適用<br>
+            　(本来の目的から逸れました)
+        </p>
+        <!-- ↓ 動的領域 -->
+        <!-- 詳細の表示非表示ボタン -->
+        <p>
+            <span id="tgl-btn-4" class="tgl-btn">
+            詳細 >
+            </span>
+        </p>
+        <!-- 表示非表示領域 -->
+        <div id="hide-area-4" class="hide-area" style="display:none">
+            <h3>1. ピアノ音声をプロットしてみる</h3>
+            <p class="font">
+                　昨日，演奏をMIDIデータで録音するためにUSBでPCとデジタル接続し，ノイズのない綺麗な録音ができるようになったので，この音声を使ってみようと思う．図3は録音した音声をAudacityというソフトで読み込み，分割し個別に保存する様子である．今回は音源としてCメジャースケールを1音ずつ鳴らしたものと，コード:Cを録音したものを用意した．<br>
+                <br>
+                <a href="./attach/260420_0036.png" target="_blank">
+                    <div  class="fig">
+                        <img src="./attach/260420_0036.png">
+                    </div>
+                    <p style="text-align:center;font-size:12px; color:#aaaaaa; margin:0;">
+                        Fig. 3　録音した音声波形(Audacity)
+                    </p>
+                </a>
+                <br>
+                C4 ~ C5の音声データと，純粋な時間領域の波形，そのPSD（パワースペクトル密度）$^{[*]}$を求めてプロットしたものを示す．PSDにおいて，単音を鳴らしているだけなのにも関わらず複数のピークが存在することから，倍音が鳴っていることが確認できる．また，基本周波数がC, D, Eと高くなるにつれて，ピーク同士の感覚が広がっていることも確認できる．さらに，基準となるA4の音は440 Hzであるが，これは図9が該当する．同図では，A4の基本周波数（最も左側のピーク）が丁度440 Hzに位置していることも確認できた．<br>
+                <br>
+
+                <!-- 詳細の表示非表示ボタン -->
+                <!-- 一括開閉 -->
+                <div style="text-align: right; margin-right: 10px;">
+                    ↓↓
+                    <button class="bulk-tgl-btn" data-start="5" data-end="12" data-action="open">一括全表示</button>
+                    <button class="bulk-tgl-btn" data-start="5" data-end="12" data-action="close">一括全非表示</button>
+                </div>
+                <!-- ■ C -->
+                <p>
+                    <span id="tgl-btn-5" class="tgl-btn is-open" data-open="C を表示中 v" data-close="C を表示 >">
+                        C を表示中 v
+                    </span>
+                </p>
+                <!-- 表示非表示領域 -->
+                <div id="hide-area-5" class="hide-area" style="border:none;">
+                    <div style="text-align: center;">
+                        <audio controls>
+                            <source src="./attach/wav/260419_piano_C.wav" type="audio/wav">
+                        </audio>
+                    </div>
+                    <a href="./attach/C.jpg" target="_blank">
+                        <div  class="fig">
+                            <img src="./attach/C.jpg">
+                        </div>
+                        <p style="text-align:center;font-size:12px; color:#aaaaaa; margin:0;">Fig. 4　Cの波形とPSD</p>
+                    </a>
+                </div>
+
+                <!-- ■ D -->
+                <p>
+                    <span id="tgl-btn-6" class="tgl-btn" data-open="D を表示中 v" data-close="D を表示 >">
+                        D を表示 >
+                    </span>
+                </p>
+                <!-- 表示非表示領域 -->
+                <div id="hide-area-6" class="hide-area" style="display:none; border:none;">
+                    <div style="text-align: center;">
+                        <audio controls>
+                            <source src="./attach/wav/260419_piano_D.wav" type="audio/wav">
+                        </audio>
+                    </div>
+                    <a href="./attach/D.jpg" target="_blank">
+                        <div  class="fig">
+                            <img src="./attach/D.jpg">
+                        </div>
+                        <p style="text-align:center;font-size:12px; color:#aaaaaa; margin:0;">Fig. 5　Dの波形とPSD</p>
+                    </a>
+                </div>
+
+                <!-- ■ E -->
+                <p>
+                    <span id="tgl-btn-7" class="tgl-btn" data-open="E を表示中 v" data-close="E を表示 >">
+                        E を表示 >
+                    </span>
+                </p>
+                <!-- 表示非表示領域 -->
+                <div id="hide-area-7" class="hide-area" style="display:none; border:none;">
+                    <div style="text-align: center;">
+                        <audio controls>
+                            <source src="./attach/wav/260419_piano_E.wav" type="audio/wav">
+                        </audio>
+                    </div>
+                    <a href="./attach/E.jpg" target="_blank">
+                        <div  class="fig">
+                            <img src="./attach/E.jpg">
+                        </div>
+                        <p style="text-align:center;font-size:12px; color:#aaaaaa; margin:0;">Fig. 6　Eの波形とPSD</p>
+                    </a>
+                </div>
+
+                <!-- ■ F -->
+                <p>
+                    <span id="tgl-btn-8" class="tgl-btn" data-open="F を表示中 v" data-close="F を表示 >">
+                        F を表示 >
+                    </span>
+                </p>
+                <!-- 表示非表示領域 -->
+                <div id="hide-area-8" class="hide-area" style="display:none; border:none;">
+                    <div style="text-align: center;">
+                        <audio controls>
+                            <source src="./attach/wav/260419_piano_F.wav" type="audio/wav">
+                        </audio>
+                    </div>
+                    <a href="./attach/F.jpg" target="_blank">
+                        <div  class="fig">
+                            <img src="./attach/F.jpg">
+                        </div>
+                        <p style="text-align:center;font-size:12px; color:#aaaaaa; margin:0;">Fig. 7　Fの波形とPSD</p>
+                    </a>
+                </div>
+
+                <!-- ■ G -->
+                <p>
+                    <span id="tgl-btn-9" class="tgl-btn" data-open="G を表示中 v" data-close="G を表示 >">
+                        G を表示 >
+                    </span>
+                </p>
+                <!-- 表示非表示領域 -->
+                <div id="hide-area-9" class="hide-area" style="display:none; border:none;">
+                    <div style="text-align: center;">
+                        <audio controls>
+                            <source src="./attach/wav/260419_piano_G.wav" type="audio/wav">
+                        </audio>
+                    </div>
+                    <a href="./attach/G.jpg" target="_blank">
+                        <div  class="fig">
+                            <img src="./attach/G.jpg">
+                        </div>
+                        <p style="text-align:center;font-size:12px; color:#aaaaaa; margin:0;">Fig. 8　Gの波形とPSD</p>
+                    </a>
+                </div>
+
+                <!-- ■ A -->
+                <p>
+                    <span id="tgl-btn-10" class="tgl-btn" data-open="A（440 Hz） を表示中 v" data-close="A（440 Hz） を表示 >">
+                        A（440 Hz）を表示 >
+                    </span>
+                </p>
+                <!-- 表示非表示領域 -->
+                <div id="hide-area-10" class="hide-area" style="display:none; border:none;">
+                    <div style="text-align: center;">
+                        <audio controls>
+                            <source src="./attach/wav/260419_piano_A.wav" type="audio/wav">
+                        </audio>
+                    </div>
+                    <a href="./attach/A.jpg" target="_blank">
+                        <div  class="fig">
+                            <img src="./attach/A.jpg">
+                        </div>
+                        <p style="text-align:center;font-size:12px; color:#aaaaaa; margin:0;">Fig. 9　Aの波形とPSD</p>
+                    </a>
+                </div>
+
+                <!-- ■ B -->
+                <p>
+                    <span id="tgl-btn-11" class="tgl-btn" data-open="B を表示中 v" data-close="B を表示 >">
+                        B を表示 >
+                    </span>
+                </p>
+                <!-- 表示非表示領域 -->
+                <div id="hide-area-11" class="hide-area" style="display:none; border:none;">
+                    <div style="text-align: center;">
+                        <audio controls>
+                            <source src="./attach/wav/260419_piano_B.wav" type="audio/wav">
+                        </audio>
+                    </div>
+                    <a href="./attach/B.jpg" target="_blank">
+                        <div  class="fig">
+                            <img src="./attach/B.jpg">
+                        </div>
+                        <p style="text-align:center;font-size:12px; color:#aaaaaa; margin:0;">Fig. 10　Bの波形とPSD</p>
+                    </a>
+                </div>
+
+                <!-- ■ C5 -->
+                <p>
+                    <span id="tgl-btn-12" class="tgl-btn" data-open="C5 を表示中 v" data-close="C5 を表示 >">
+                        C5 を表示 >
+                    </span>
+                </p>
+                <!-- 表示非表示領域 -->
+                <div id="hide-area-12" class="hide-area" style="display:none; border:none;">
+                    <div style="text-align: center;">
+                        <audio controls>
+                            <source src="./attach/wav/260419_piano_C5.wav" type="audio/wav">
+                        </audio>
+                    </div>
+                    <a href="./attach/C5.jpg" target="_blank">
+                        <div  class="fig">
+                            <img src="./attach/C5.jpg">
+                        </div>
+                        <p style="text-align:center;font-size:12px; color:#aaaaaa; margin:0;">Fig. 11　C5の波形とPSD</p>
+                    </a>
+                </div>
+
+                <!-- 一括開閉 -->
+                <div style="text-align: right; margin-right: 10px;">
+                    ↑↑
+                    <button class="bulk-tgl-btn" data-start="5" data-end="12" data-action="open">一括全表示</button>
+                    <button class="bulk-tgl-btn" data-start="5" data-end="12" data-action="close">一括全非表示</button>
+                </div>
+            </p>
+            <br><br>
+            <h3>2. 実際の和音と個別録音の加算を比較</h3>
+            <p class="font">
+                <!--  -->
+                <br>
+                　また，Cメジャーコードを実際に慣らした音（以下，C-majorと表記）と，C, E, Gの個別の音声データを単純に足し算し合わせた音（以下，C+E+Gと表記）が，どれくらい似ているのかが気になったので，図12のようなSimulinkモデルを作成した．<br>
+                <br>
+                <a href="./attach/260420_0154.png" target="_blank">
+                    <div  class="fig">
+                        <img src="./attach/260420_0154.png">
+                    </div>
+                    <p style="text-align:center;font-size:12px; color:#aaaaaa; margin:0;">Fig. 12　C, E, Gを足し合わせるSimulinkモデル</p>
+                </a>
+                <!-- ■ C-major と C+E+G の比較 -->
+                <br>
+                　音声を比較する．C+E+Gについては合成された音声をmファイルにより.wavとして書き出した．個別に鳴らしたものが，思ったより同時に鳴らしたものと似ていて驚いた．しかし，同時に鳴らした方が音に深みがあるように感じられる．同時に鳴らすことで複数の弦が振動し複数の倍音が小さくなっているためだと考えられる．（今回使用した音源はアコースティックのピアノではなく，電子ピアノでした．楽器メーカーのサンプリング技術の高さに改めて気づかされました．）<br>
+                <br>
+                <!-- 音声 -->
+                <!-- C-major -->
+                <div style="text-align: center;">
+                    <audio controls>
+                        <source src="./attach/wav/260419_piano_Cmajor.wav" type="audio/wav">
+                    </audio>
+                    <p>C-major</p>
+                </div>
+                <br>
+                <!-- C+E+G -->
+                <div style="text-align: center;">
+                    <audio controls>
+                        <source src="./attach/wav/Simulink_C+E+G.wav" type="audio/wav">
+                    </audio>
+                    <p>C+E+G</p>
+                </div>
+                <br>
+                次に，単純な時系列波形とそのPSDのプロットを比較する．特にPSDについて，両社ともピークが似通っていることが分かる．<br>
+                <br>
+                <!-- グラフ -->
+                <a href="./attach/Cmajor.jpg" target="_blank">
+                    <div  class="fig">
+                        <img src="./attach/Cmajor.jpg">
+                    </div>
+                    <p style="text-align:center;font-size:12px; color:#aaaaaa; margin:0;">Fig. 13　Cmajorの波形とPSD</p>
+                </a>
+                <br>
+                <a href="./attach/C+E+G.jpg" target="_blank">
+                    <div  class="fig">
+                        <img src="./attach/C+E+G.jpg">
+                    </div>
+                    <p style="text-align:center;font-size:12px; color:#aaaaaa; margin:0;">Fig. 14　C+E+Gの波形とPSD</p>
+                </a>
+            </p>
+
+
+
+            <br><br>
+            <h3>3. ハイパスフィルタ，ローパスフィルタを適用</h3>
+            <p class="font">
+                あ
+            </p>
+            <br><br>
+            <h3>[*] PSDについて</h3>
+            <p class="font">
+                あ
+            </p>
+        </div>
+        <!-- ↑ 動的領域 -->
+    </div>
+    <!-- ↑ コンテナ 260419 -->
+
+    <!-- ↓ コンテナ xxxxxxx -->
+    <br>
+    <div>
+        <h2>26xxxx</h2>
+        <p>
+            　・進捗があれば追加する<br>
+        </p>
+        <!-- ↓ 動的領域 -->
+        <!-- 詳細の表示非表示ボタン -->
+        <p>
+            <span id="tgl-btn-100" class="tgl-btn">
+            詳細 >
+            </span>
+        </p>
+        <!-- 表示非表示領域 -->
+        <div id="hide-area-100" class="hide-area" style="display:none">
+            <p class="font">
             　(＠_＠;)
             </p>
         </div>
         <!-- ↑ 動的領域 -->
     </div>
     <!-- ↑ コンテナ xxxxxxx -->
-
-
-
 
     <br><br><br>
     <!-- コンテナ 参考文献 -->
@@ -194,18 +525,55 @@
 <script>
     //// 詳細表示・非表示の一括処理
     // すべての「tgl-btn」クラスを持つ要素に対してループ処理を行う
-    document.querySelectorAll('.tgl-btn').forEach((btn, index) => {
+    document.querySelectorAll('.tgl-btn').forEach((btn) => {
         btn.addEventListener('click', () => {
-            // 対応する id="hide-area-X" を取得 (tgl-btn-1 なら hide-area-1)
-            const targetId = `hide-area-${index + 1}`;
-            const targetArea = document.getElementById(targetId);
+            const suffix = btn.id.replace('tgl-btn-', '');
+            const targetArea = document.getElementById(`hide-area-${suffix}`);
 
-            if(targetArea.style.display === 'none'){
-                targetArea.style.display = 'block';
-                btn.textContent = '詳細 v';
-            } else {
-                targetArea.style.display = 'none';
-                btn.textContent = '詳細 >';
+            if (targetArea) {
+                // 現在の表示状態を判定（displayがnone、またはクラスを持っていない場合を「閉じている」とする）
+                const isNowOpen = btn.classList.contains('is-open');
+
+                if (!isNowOpen) {
+                    // 開く処理
+                    targetArea.style.display = 'block';
+                    btn.textContent = btn.dataset.open || '詳細 v';
+                    btn.classList.add('is-open');
+                } else {
+                    // 閉じる処理
+                    targetArea.style.display = 'none';
+                    btn.textContent = btn.dataset.close || '詳細 >';
+                    btn.classList.remove('is-open');
+                }
+            }
+        });
+    });
+
+    // 区間を指定して一気に開閉するボタン
+    document.querySelectorAll('.bulk-tgl-btn').forEach((bulkBtn) => {
+        bulkBtn.addEventListener('click', () => {
+            const start = parseInt(bulkBtn.dataset.start);
+            const end = parseInt(bulkBtn.dataset.end);
+            const action = bulkBtn.dataset.action; // "open" または "close"
+
+            for (let i = start; i <= end; i++) {
+                // IDが数字だけのもの（tgl-btn-1 など）を対象にする
+                const btn = document.getElementById(`tgl-btn-${i}`);
+                const targetArea = document.getElementById(`hide-area-${i}`);
+
+                if (btn && targetArea) {
+                    if (action === 'open') {
+                        // 開く処理
+                        targetArea.style.display = 'block';
+                        btn.textContent = btn.dataset.open || '詳細 v';
+                        btn.classList.add('is-open');
+                    } else {
+                        // 閉じる処理
+                        targetArea.style.display = 'none';
+                        btn.textContent = btn.dataset.close || '詳細 >';
+                        btn.classList.remove('is-open');
+                    }
+                }
             }
         });
     });
@@ -221,7 +589,7 @@
 
     // 加算用関数
     async function countAPIadd(pw, id){
-        const url = "https://floor02.sakura.ne.jp/function/ct/ct.php?pw=" + pw + "&id=" + id; // ■■ デバッグ時はここをコメントアウト
+        // const url = "https://floor02.sakura.ne.jp/function/ct/ct.php?pw=" + pw + "&id=" + id; // ■■ デバッグ時はここをコメントアウト
         try {
             const response = await fetch(url);
             if (!response.ok) throw new Error("HTTPerr: " + response.status);

@@ -1,0 +1,326 @@
+<!-- 260301_1352 -->
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- ↓ フォント -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DotGothic16&display=swap" rel="stylesheet">
+    <!-- ↑ フォント -->
+    <!-- ↓ CSS -->
+    <link rel="stylesheet" href="style.css">
+    <!-- ↓ プロット用ライブラリ -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.plot.ly/plotly-2.32.0.min.js"></script>
+    <!-- ↓ プロット用js -->
+    <script src="script.js" defer></script>
+    <!-- ↓ Latexを使うため -->
+    <script>
+        // ↓ MathJaxのデフォルトで無効化されている$マーク1重によるインライン表示を使えるようにするため
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$']]
+            }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <!-- ↓ ブラウザタブアイコン -->
+    <link rel="icon" href="icon.jpg">
+    <title>kah221-shared-qr</title>
+</head>
+
+<body>
+    <!-- Fixedアイコン -->
+    <!-- <img src="230821_herta-48p.gif" alt="自作ヘルタアイコン" style="width:100px; margin-left:auto"> -->
+    <!-- <img class="fixedicon" src="250820_herta-eyes.gif" alt="自作ヘルタアイコン" style="width:50px; margin-left:auto"> -->
+
+
+    <br>
+    <!-- <p style="text-align:center">ゲーム用プロフィールページ</p> -->
+    <!-- <p style="text-align:center;">
+        <a href="https://x.com/n83orm">@n83orm</a>
+        　|　
+        <a href="http://discordapp.com/users/473663926538600448">discord</a>
+        　|　
+        <a href="https://github.com/kah221">github</a>
+    </p> -->
+
+    <br>
+    <h1>■ QRコードの理解</h1>
+    <br>
+    <!-- <div> -->
+        <p style="text-align:center;font-size:12px; color:#aaaaaa; margin:0; border:solid #dfdfdf 1px; padding: 5px">
+            <br>
+            　マウスのドラッグによる画面キャプチャで，画面上のQRコードを読み込むソフトを作ってみたい．
+            <br>　
+        </p>
+    <!-- </div> -->
+
+
+    <!-- <h1>目次</h1> -->
+    <br>
+    <!-- <h1>■ いいい</h1>
+    <p style="text-align:center; padding:3px; background-color:#1f1f1f; margin:0 10px">
+        <span class="gnsn">原神</span>, 
+        <span class="hsr">HSR</span>, 
+        <span class="zzz">ZZZ</span>, 
+        <span class="endf">Endfield</span>, 
+        <span class="mnsb">魔法少女ノ魔女裁判</span>, 
+        Minecraft, スプラ3
+    </p> -->
+
+    <!-- <hr> -->
+    <h1 class="bl-1">■ Logs</h1>
+    <br>
+    <!-- コンテナ 260409 -->
+    <!-- <div>
+        <h2>260411</h2>
+        <p>
+            　・ページ作成<br>
+            　・QRコードの仕組み調査
+        </p>
+        <!-- ↓ 動的領域 -->
+        <!-- 詳細の表示非表示ボタン -->
+        <p>
+            <span id="tgl-btn-1" class="tgl-btn">
+            詳細 >
+            </span>
+        </p>
+        <!-- 表示非表示領域 -->
+        <div id="hide-area-1" class="hide-area" style="display:none">
+            <p class="font">
+                　あ
+            </p>
+        </div>
+        <!-- ↑ 動的領域 -->
+    </div> -->
+
+
+    <!-- ↓ コンテナ xxxxxxx -->
+    <br>
+    <div>
+        <h2>26xxxx</h2>
+        <p>
+            　・進捗があれば追加する<br>
+        </p>
+        <!-- ↓ 動的領域 -->
+        <!-- 詳細の表示非表示ボタン -->
+        <p>
+            <span id="tgl-btn-3" class="tgl-btn">
+            詳細 >
+            </span>
+        </p>
+        <!-- 表示非表示領域 -->
+        <div id="hide-area-3" class="hide-area" style="display:none">
+            <p class="font">
+            　(＠_＠;)
+            </p>
+        </div>
+        <!-- ↑ 動的領域 -->
+    </div>
+    <!-- ↑ コンテナ xxxxxxx -->
+
+
+
+
+    <br><br><br>
+    <!-- コンテナ 参考文献 -->
+    <hr>
+    <h1 class="pi-1">■ References</h1>
+    <br>
+    <div>
+        <p>
+            <!-- [*1] 青木直史（2014）『ゼロからはじめる音響学』講談社.<br> -->
+            <!-- [*2] <a href="https://ja.wikipedia.org/w/index.php?title=%E3%83%95%E3%82%A9%E3%83%AB%E3%83%9E%E3%83%B3%E3%83%88&oldid=106377368" target="_blank">Wikipedia日本語版「フォルマント」（2026/4/10 閲覧）</a><br> -->
+            <!-- [*2] Wikipedia日本語版「フォルマント」，https://ja.wikipedia.org/wiki/フォルマント（2026/4/10 閲覧）<br> -->
+        </p>
+    </div>
+
+<script>
+    //// 詳細表示・非表示の一括処理
+    // すべての「tgl-btn」クラスを持つ要素に対してループ処理を行う
+    document.querySelectorAll('.tgl-btn').forEach((btn, index) => {
+        btn.addEventListener('click', () => {
+            // 対応する id="hide-area-X" を取得 (tgl-btn-1 なら hide-area-1)
+            const targetId = `hide-area-${index + 1}`;
+            const targetArea = document.getElementById(targetId);
+
+            if(targetArea.style.display === 'none'){
+                targetArea.style.display = 'block';
+                btn.textContent = '詳細 v';
+            } else {
+                targetArea.style.display = 'none';
+                btn.textContent = '詳細 >';
+            }
+        });
+    });
+
+
+    // ------------------------------
+    // countAPI(自作)
+    // ------------------------------
+
+
+    // API利用合言葉
+    const api_pass = "fire-thunder";
+
+    // 加算用関数
+    async function countAPIadd(pw, id){
+        // const url = "https://floor02.sakura.ne.jp/function/ct/ct.php?pw=" + pw + "&id=" + id; // ■■ デバッグ時はここをコメントアウト
+        try {
+            const response = await fetch(url);
+            if (!response.ok) throw new Error("HTTPerr: " + response.status);
+            const data = await response.json();
+
+            if (data.status === "success") {
+                return data.count;
+            } else {
+                return "DBerr";
+            }
+        } catch (error) {
+            console.error("RQerr:", error);
+            return "RQerr";
+        }
+    }
+
+    // 取得用関数
+    async function countAPIget(pw, id){
+        // md=get をパラメータに含める
+        const url = "https://floor02.sakura.ne.jp/function/ct/ct.php?pw=" + pw + "&id=" + id + "&md=get";
+
+        try {
+            const response = await fetch(url);
+
+            if (!response.ok) {
+                throw new Error("HTTPerr: " + response.status);
+            }
+
+            const data = await response.json();
+
+            if (data.status === "success") {
+                return data.count;
+            } else {
+                console.error("DBerr:", data.message);
+                return "DBerr";
+            }
+        } catch (error) {
+            console.error("RQerr:", error);
+            return "RQerr";
+        }
+    }
+
+
+        // 画面が読み込まれた時に、両方の処理をまとめて実行する
+    window.addEventListener('DOMContentLoaded', async () => {
+
+        // ------------------------------
+        // 処理1：アクセスカウンター（自動加算）
+        // ------------------------------
+        const viewCountId = "kah221_shared_qr_view";
+        const hasVisited = sessionStorage.getItem("visited_" + viewCountId);
+        let viewResultCount;
+
+        if (hasVisited) {
+            console.log("visited >>> countAPIget");
+            viewResultCount = await countAPIget(api_pass, viewCountId);
+        } else {
+            console.log("firsttime >>> countAPIadd");
+            viewResultCount = await countAPIadd(api_pass, viewCountId);
+            if (viewResultCount !== "DBerr" && viewResultCount !== "RQerr") {
+                sessionStorage.setItem("visited_" + viewCountId, "true");
+            }
+        }
+
+        // 取得した数字をHTMLに反映（要素が存在する場合のみ）
+        const displayElement = document.getElementById("countAPI-display");
+        if (displayElement) {
+            displayElement.innerText = viewResultCount;
+        }
+
+        // ------------------------------
+        // 処理2：見たよボタン（クリックで加算）
+        // ------------------------------
+        const counters = document.querySelectorAll('.simple-counter');
+
+        for (const counter of counters) {
+            const targetId = counter.dataset.id;
+            const hasClicked = sessionStorage.getItem("clicked_" + targetId);
+
+            // 1. 初期表示（APIから現在の数字を取得して表示）
+            counter.innerText = "...";
+            const initialCount = await countAPIget(api_pass, targetId);
+            counter.innerText = (initialCount !== "DBerr" && initialCount !== "RQerr") ? initialCount : "err";
+
+            if (hasClicked) {
+                counter.style.opacity = "0.5";
+                counter.style.cursor = "not-allowed";
+                continue;
+            }
+
+            // 2. クリックイベントの登録（クリックで加算）
+            counter.addEventListener('click', async () => {
+                // 連打防止（通信中なら何もしない）
+                if (counter.dataset.processing === "true" || sessionStorage.getItem("clicked_" + targetId)) return;
+
+                // 処理中フラグを立てて、表示を「...」にする
+                counter.dataset.processing = "true";
+                const originalCount = counter.innerText;
+                counter.innerText = "...";
+
+                // APIを叩いて加算
+                const newCount = await countAPIadd(api_pass, targetId);
+
+                // 結果の反映
+                if (newCount !== "DBerr" && newCount !== "RQerr") {
+                    counter.innerText = newCount;
+                    sessionStorage.setItem("clicked_" + targetId, "true");
+                    counter.style.opacity = "0.5";
+                    counter.style.cursor = "not-allowed";
+                } else {
+                    counter.innerText = originalCount; // 失敗時は元の数字に戻す
+                }
+
+                // 処理中フラグを解除
+                counter.dataset.processing = "false";
+            });
+        }
+
+    });
+
+    </script>
+
+    <br><br><br>
+    <!-- 見たよボタン -->
+    <p style="text-align:center">見たよボタン→ <span class="simple-counter" data-id="kah221_shared_qr_haveread"></span><br>
+        <span style="font-size:14px">1度のアクセスで1回だけ押せます</span>
+    </p>
+
+    <br><br><br>
+    <p style="text-align:center;font-size:12px; color:#aaaaaa; margin:0">
+        　260411_1540)：開始
+    </p>
+    <!-- カウンタ -->
+    <!-- アクセス kah221_shared_oiae_view -->
+    <p id="countAPI-display" style="text-align:center; font-size:14px; color:#010409;"></p>
+
+    <!-- 見たよボタンのスタイル -->
+    <style>
+        .simple-counter {
+            display: inline-block;
+            padding: 2px 12px;
+            background-color: #343434;
+            border: 1px solid #ccc;
+            border-radius: 2px;
+            cursor: pointer;
+            user-select: none;
+            color:#fff;
+        }
+        .simple-counter:hover {
+            background-color:#e53368;
+        }
+    </style>
+</body>
+</html>
